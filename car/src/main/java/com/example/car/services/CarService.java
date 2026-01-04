@@ -1,14 +1,13 @@
 package com.example.car.services;
 
-import com.example.car.entities.Car;
-import com.example.car.entities.Client;
 import com.example.car.models.CarResponse;
 import com.example.car.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
+import com.example.car.entities.Car;
+import com.example.car.entities.Client;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,8 +25,6 @@ public class CarService {
         Client[] clients = response.getBody();
         return cars.stream().map((Car car) -> mapToCarResponse(car, clients)).toList();
     }
-
-    // this function allow the change the Car Entity to A Model that we will send ot the client side using the @Builder Annotation
     private CarResponse mapToCarResponse(Car car, Client[] clients) {
         Client foundClient = Arrays.stream(clients)
                 .filter(client -> client.getId().equals(car.getClient_id()))
@@ -42,8 +39,6 @@ public class CarService {
                 .model(car.getModel())
                 .build();
     }
-
-
     public CarResponse findById(Long id) throws Exception {
         Car car = carRepository.findById(id).orElseThrow(() -> new Exception("Invalid Car Id"));
         Client client = restTemplate.getForObject(this.URL + "/api/client/" + car.getClient_id(), Client.class);

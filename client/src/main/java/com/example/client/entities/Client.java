@@ -23,14 +23,8 @@ public class Client {
         this.age = age;
     }
 
-    public Client() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Client() {
+        
     }
 
     public String getNom() {
@@ -47,6 +41,14 @@ public class Client {
 
     public void setAge(Float age) {
         this.age = age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 

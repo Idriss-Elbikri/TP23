@@ -12,15 +12,6 @@ public class CarResponse {
     public CarResponse() {
     }
 
-    public CarResponse(Long id, String brand, String model, String matricue, Client client) {
-        this.id = id;
-        this.brand = brand;
-        this.model = model;
-        this.matricue = matricue;
-        this.client = client;
-    }
-
-    // Getters et Setters (Data)
     public Long getId() {
         return id;
     }
@@ -45,6 +36,14 @@ public class CarResponse {
         this.model = model;
     }
 
+    public CarResponse(Long id, String brand, String model, String matricue, Client client) {
+        this.id = id;
+        this.brand = brand;
+        this.model = model;
+        this.matricue = matricue;
+        this.client = client;
+    }
+
     public String getMatricue() {
         return matricue;
     }
@@ -59,17 +58,6 @@ public class CarResponse {
 
     public void setClient(Client client) {
         this.client = client;
-    }
-
-    @Override
-    public String toString() {
-        return "CarResponse{" +
-                "id=" + id +
-                ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", matricue='" + matricue + '\'' +
-                ", client=" + client +
-                '}';
     }
 
     @Override
@@ -95,6 +83,18 @@ public class CarResponse {
         result = 31 * result + (client != null ? client.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "CarResponse{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", matricue='" + matricue + '\'' +
+                ", client=" + client +
+                '}';
+    }
+
 
     public static Builder builder() {
         return new Builder();
